@@ -1,0 +1,19 @@
+server:
+  port: 9898
+
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://54.71.239.115:5432/siaan_db
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:sucha1234}
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+credential: "/home/emer/Programacion/Kotlin/ms-siaan/src/main/resources/credential.json"
