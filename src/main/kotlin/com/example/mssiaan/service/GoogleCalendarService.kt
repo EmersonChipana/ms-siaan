@@ -28,7 +28,8 @@ class GoogleCalendarService {
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
      */
-    private val SCOPES: MutableList<String?>? = listOf(CalendarScopes.CALENDAR_READONLY, CalendarScopes.CALENDAR_EVENTS).toMutableList()
+    private val SCOPES: MutableList<String?>? = listOf(CalendarScopes.CALENDAR_READONLY, CalendarScopes.CALENDAR_EVENTS
+    , CalendarScopes.CALENDAR).toMutableList()
 
 
     private val CREDENTIALS_FILE_PATH = "credential.json"

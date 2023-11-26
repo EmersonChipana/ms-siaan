@@ -33,13 +33,17 @@ class ScheduleController @Autowired constructor(
     @GetMapping("/create/{userId}")
     fun sendScheduloToCalendar(
             @PathVariable userId:Int,
-            @RequestParam authCode: String
+            @RequestParam authCode: String,
+            @RequestParam(required = false) email: Boolean = false,
+            @RequestParam(required = false) emailHours: Int = 24,
+            @RequestParam(required = false) pop: Boolean = false,
+            @RequestParam(required = false) popMin: Int = 10
     ): ResponseEntity<ResponseDto<String>>{
-        val schedule = calendarService.createCalendar("emersonchipana12345@gmail.com", authCode)
+        val schedule = calendarService.createListEvents(authCode, userId, email,emailHours, pop, popMin)
 
         return ResponseEntity.ok(
                 ResponseDto<String>(
-                        data = "Evento Creado correctamente",
+                        data = "Calendario creado con exito",
                         success = true,
                         message = "Horario creado",
                         error = ""

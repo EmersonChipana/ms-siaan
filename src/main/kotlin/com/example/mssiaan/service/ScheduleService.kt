@@ -26,7 +26,7 @@ class ScheduleService @Autowired constructor(
     }
 
     fun getScheduleForCalendar(userId: Int): List<ScheduleDto>{
-        val schedule = scheduleDao.getSchedule(userId)
+        val schedule = getSchedule(userId)
         var scheduleForCalendar = mutableListOf<ScheduleDto>()
         schedule.forEach { it ->
             val subjectDto = SubjectDto(

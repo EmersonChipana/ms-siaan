@@ -26,6 +26,8 @@ interface ScheduleDao {
             "INNER JOIN aula_dia_horario adh on par.paralelo_id = adh.paralelo_paralelo_id " +
             "INNER JOIN horario hor on adh.horario_id = hor.horario_id " +
             "INNER JOIN aula aul on adh.aula_id = aul.aula_id " +
-            "WHERE us.user_id = #{userId} ")
+            "WHERE us.user_id = #{userId} " +
+            "AND est_par.estado = true " +
+            "AND par.estado = true ")
     fun getSchedule(userId: Int): List<ScheduleEntity>
 }
