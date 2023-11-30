@@ -54,8 +54,8 @@ class CalendarService @Autowired constructor(
     fun getStart(day: String): String{
         val now = LocalDateTime.now()
         val year = now.year
-        val firstSemester = LocalDate.of(year,1,1).with(TemporalAdjusters.firstInMonth(getDay(day)))
-        val secondSemester = LocalDate.of(year,7,1).with(TemporalAdjusters.firstInMonth(getDay(day)))
+        val firstSemester = LocalDate.of(year,2,1).with(TemporalAdjusters.firstInMonth(getDay(day)))
+        val secondSemester = LocalDate.of(year,8,1).with(TemporalAdjusters.firstInMonth(getDay(day)))
 
         val month = now.monthValue
         return if (month <= 6) "${year}-02-0${firstSemester.dayOfMonth}T" else "${year}-08-0${secondSemester.dayOfMonth}T"
@@ -65,10 +65,10 @@ class CalendarService @Autowired constructor(
         return when(dat){
             "Lunes" -> DayOfWeek.MONDAY
             "Martes" -> DayOfWeek.TUESDAY
-            "Miercoles" -> DayOfWeek.WEDNESDAY
+            "Miércoles" -> DayOfWeek.WEDNESDAY
             "Jueves" -> DayOfWeek.THURSDAY
             "Viernes" -> DayOfWeek.FRIDAY
-            "Sabado" -> DayOfWeek.SATURDAY
+            "Sábado" -> DayOfWeek.SATURDAY
             else -> DayOfWeek.MONDAY
         }
     }

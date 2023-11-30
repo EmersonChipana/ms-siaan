@@ -12,11 +12,10 @@ import org.springframework.stereotype.Component
 interface ScheduleDao {
 
     @Select("SELECT us.user_id, par.num_paralelo, " +
-            "person.nombre as docente_nombre, mat.nombre_materia, mat.sigla_materia, " +
+            "person_docen.nombre as docente_nombre, mat.nombre_materia, mat.sigla_materia, " +
             "adh.aula_dia_horario_id ,hor.hora_inicio, hor.hora_fin, aul.bloque, aul.numero_aula, adh.dia " +
-            "from persona person " +
-            "INNER JOIN usuario us on person.id_persona = us.persona_id " +
-            "INNER JOIN estudiante est on us.user_id = est.user_id " +
+            "from estudiante est " +
+            "INNER JOIN usuario us on us.user_id = est.user_id " +
             "INNER JOIN estudiante_paralelo est_par on est.estudiante_id = est_par.estudiante_id " +
             "INNER JOIN paralelo par on est_par.paralelo_id = par.paralelo_id " +
             "INNER JOIN materia mat on par.materia_id = mat.materia_id " +

@@ -20,7 +20,7 @@ class ScheduleService @Autowired constructor(
             logger.info("Obteniendo horarios del usuario: $userId")
             return scheduleDao.getSchedule(userId)
         } catch (e: Exception){
-            logger.error("Error al obtener los horarios del usuario: $userId")
+            logger.error("Error al obtener los horarios del usuario: $userId" + e.message)
             throw Exception("Error al obtener los horarios del usuario: $userId")
         }
     }
