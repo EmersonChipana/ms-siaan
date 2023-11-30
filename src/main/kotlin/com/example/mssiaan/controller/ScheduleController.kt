@@ -1,6 +1,7 @@
 package com.example.mssiaan.controller
 
 import com.example.mssiaan.dto.response.ResponseDto
+import com.example.mssiaan.dto.response.ScheduleDto
 import com.example.mssiaan.service.CalendarService
 import com.example.mssiaan.service.GoogleCalendarService
 import com.example.mssiaan.service.ScheduleService
@@ -25,9 +26,16 @@ class ScheduleController @Autowired constructor(
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     @GetMapping("/{userId}")
-    fun getSchedule(@PathVariable userId:Int): ResponseEntity<List<*>>{
+    fun getSchedule(@PathVariable userId:Int): ResponseEntity<ResponseDto<List<ScheduleDto>>>{
         val schedule = scheduleService.getScheduleForCalendar(userId)
-        return ResponseEntity.ok(schedule)
+        return ResponseEntity.ok(
+                ResponseDto<List<ScheduleDto>>(
+                        data = schedule,
+                        success = true,
+                        message = "Horario obtenido",
+                        error = ""
+                )
+        )
     }
 
     @GetMapping("/create/{userId}")
@@ -63,5 +71,6 @@ class ScheduleController @Autowired constructor(
                 )
         )
     }
+
 
 }
